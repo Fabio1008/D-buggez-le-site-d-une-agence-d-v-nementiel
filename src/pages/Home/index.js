@@ -13,7 +13,7 @@ import Modal from "../../containers/Modal";
 import { useData } from "../../contexts/DataContext";
 
 const Page = () => {
-  const {last} = useData()
+  const { lastEvent } = useData(); // Récuperation des donneés du dernier élement via dataContext
   return <>
     <header>
       <Menu />
@@ -116,13 +116,17 @@ const Page = () => {
     <footer className="row">
       <div className="col presta">
         <h3>Notre derniére prestation</h3>
+        {/* Vérifie si 'lastEvent' existe et que 'lastEvent.cover' et 'lastEvent.title' sont définis */}
+        {lastEvent && lastEvent.cover && lastEvent.title ?(
         <EventCard
-          imageSrc={last?.cover}
-          title={last?.title}
-          date={new Date(last?.date)}
+          imageSrc={lastEvent?.cover}
+          title={lastEvent?.title}
+          date={new Date(lastEvent?.date)}
           small
           label="boom"
         />
+         // Si l'une des conditions précédentes n'est pas satisfaite, ne rend rien (null)
+        ) : null} 
       </div>
       <div className="col contact">
         <h3>Contactez-nous</h3>
