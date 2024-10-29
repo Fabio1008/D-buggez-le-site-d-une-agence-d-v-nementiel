@@ -29,7 +29,7 @@ const EventList = () => {
   });
   const changeType = (evtType) => {
     setCurrentPage(1);
-    setType(evtType);
+    setType(evtType || null); // Si `evtType` est vide, réinitialise à `null`
   };
   const pageNumber = Math.floor((filteredEvents?.length || 0) / PER_PAGE) + 1;
   const typeList = new Set(data?.events.map((event) => event.type));
@@ -43,7 +43,9 @@ const EventList = () => {
           <h3 className="SelectTitle">Catégories</h3>
           <Select
             selection={Array.from(typeList)}
-            onChange={(value) => (value ? changeType(value) : changeType(null))}
+            value={type}                                  // Définit la valeur sélectionnée actuelle
+            onChange={(value) => changeType(value)}        // Passe la valeur sélectionnée à `changeType`
+            label=""
           />
           <div id="events" className="ListContainer">
             {filteredEvents.map((event) => (
