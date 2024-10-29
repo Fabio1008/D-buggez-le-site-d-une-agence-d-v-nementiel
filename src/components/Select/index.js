@@ -7,18 +7,18 @@ import "./style.scss";
 
 const Select = ({
   selection,
+  value,//  Nouvelle prop que form peut controler             
   onChange,
   name,
   titleEmpty,
   label,
   type = "normal",
 }) => {
-  const [value, setValue] = useState();
+ 
   const [collapsed, setCollapsed] = useState(true);
   const changeValue = (newValue) => {
    // Ajout newValue comme paramètre de onChange
     onChange(newValue);
-    setValue(newValue);
     setCollapsed(true); // ajout de true pour refermer après la selection d'une option
   };
   return (
@@ -40,7 +40,7 @@ const Select = ({
               {selection.map((s) => (
                 <li key={s} onClick={() => changeValue(s)}>
                   <input
-                    defaultChecked={value === s}
+                    checked={value === s}  // Utilisation de `value` pour afficher l’option sélectionnée
                     name="selected"
                     type="radio"
                   />{" "}
@@ -84,6 +84,7 @@ const Arrow = () => (
 
 Select.propTypes = {
   selection: PropTypes.arrayOf(PropTypes.string).isRequired,
+  value: PropTypes.string, // Ajout
   onChange: PropTypes.func,
   name: PropTypes.string,
   titleEmpty: PropTypes.bool,
@@ -92,6 +93,7 @@ Select.propTypes = {
 }
 
 Select.defaultProps = {
+  value: "", // Ajout
   onChange: () => null,
   titleEmpty: false,
   label: "",
