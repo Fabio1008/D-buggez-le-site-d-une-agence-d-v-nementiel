@@ -23,7 +23,7 @@ const Page = () => {
         <Slider />
       </section>
       <section className="ServicesContainer">
-        <h2 className="Title" id="nos-services">Nos services</h2>
+        <h2 className="Title" id="nos-services">Nos services</h2>  {/*  Ajout de l'ID  */}
         <p>Nous organisons des événements sur mesure partout dans le monde</p>
         <div className="ListContainer">
           <ServiceCard imageSrc="/images/priscilla-du-preez-Q7wGvnbuwj0-unsplash1.png">
