@@ -29,9 +29,9 @@ const Button = ({ title, onClick, type, disabled, children }) => {
           className="Button"
           type="submit"
           data-testid="button-test-id"
-          value={children}
+          value={title} // modif de children à title pour afficher un texte simple
           onClick={onClick}
-          title={title}
+          
         />
       );
     default:

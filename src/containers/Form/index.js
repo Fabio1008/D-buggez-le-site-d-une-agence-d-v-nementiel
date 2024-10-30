@@ -58,7 +58,7 @@ const Form = ({ onSuccess, onError }) => {
           <Field placeholder="" label="Email" value={email}
             onChange={(e) => setEmail(e.target.value)}/>
           <Button type={BUTTON_TYPES.SUBMIT}
-          title={sending ? "En cours" : "Envoyer"}
+          title={sending ? "En cours" : "Envoyer"} // ajout de title
           disabled={sending || !isFormValid} data-testid="button-test-id" > {/* envoyer si tous les champs sont remplis */}
             
           </Button>
